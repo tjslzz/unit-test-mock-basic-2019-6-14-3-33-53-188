@@ -23,7 +23,15 @@ public class CashRegisterTest {
 
     @Test
     public void should_print_the_stub_purchase_when_call_process() {
-
+        //given
+        Printer printer = mock(Printer.class);
+        CashRegister cashRegister = new CashRegister(printer);
+        Purchase purchase = mock(Purchase.class);
+        //when
+        given(purchase.asString()).willReturn("");
+        cashRegister.process(purchase);
+        //then
+        verify(printer,times(1)).print("");
     }
 
     @Test
